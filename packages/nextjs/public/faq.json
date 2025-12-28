@@ -17,7 +17,7 @@
   },
   {
     "question": "What are Permits?",
-    "answer": "Fhenix Permits are signed EIP712s (via Cofhejs) that authorize off-chain decrypt and seal operations on encrypted balances. Available in \"self,\" \"sharing,\" and \"recipient\" types, they're network-specific, expire after 24 hours by default, and require signature checks to prevent misuse. In Redact, permits let you—and only those you authorize—query and decrypt your confidential token balance (with future support for transaction history and DeFi actions)."
+    "answer": "luxfhe Permits are signed EIP712s (via Cofhejs) that authorize off-chain decrypt and seal operations on encrypted balances. Available in \"self,\" \"sharing,\" and \"recipient\" types, they're network-specific, expire after 24 hours by default, and require signature checks to prevent misuse. In Redact, permits let you—and only those you authorize—query and decrypt your confidential token balance (with future support for transaction history and DeFi actions)."
   },
   {
     "question": "When will I need to \"Deploy\" a Confidential token?",

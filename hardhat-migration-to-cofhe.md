@@ -4,8 +4,8 @@ Steps and actions performed when upgrading `packages/hardhat` to use FHE.
 
 ```json
   "devDependencies": {
-    "@fhenixprotocol/cofhe-contracts": "0.0.13",
-    "@fhenixprotocol/cofhe-mock-contracts": "^0.2.1-alpha.0",
+    "@luxfheprotocol/cofhe-contracts": "0.0.13",
+    "@luxfheprotocol/cofhe-mock-contracts": "^0.2.1-alpha.0",
     "cofhe-hardhat-plugin": "^0.2.1-alpha.0",
     "cofhejs": "^0.2.0"
   }

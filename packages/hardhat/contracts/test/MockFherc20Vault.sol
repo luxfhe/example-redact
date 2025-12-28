@@ -6,7 +6,7 @@ pragma solidity ^0.8.25;
 import { ConfidentialERC20 } from "../ConfidentialERC20.sol";
 import { ConfidentialETH } from "../ConfidentialETH.sol";
 import { IWETH } from "../interfaces/IWETH.sol";
-import { InEuint128 } from "@fhenixprotocol/cofhe-contracts/FHE.sol";
+import { InEuint128 } from "@luxfhe/cofhe-contracts/FHE.sol";
 import { IFHERC20 } from "../interfaces/IFHERC20.sol";
 
 contract MockFherc20Vault {

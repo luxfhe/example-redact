@@ -24,7 +24,7 @@ export const Footer = () => {
           <FaTelegramPlane title="Telegram" size={iconSize} />
         </a>
         <a
-          href="https://github.com/fhenixProtocol/redact"
+          href="https://github.com/luxfheProtocol/redact"
           target="_blank"
           rel="noopener noreferrer"
           className="dark:text-white"
@@ -33,13 +33,13 @@ export const Footer = () => {
         </a>
       </div>
       <div className="w-px h-4 bg-blue-900"></div>
-      <a href="https://fhenix.io" target="_blank" rel="noopener noreferrer" className="dark:text-white">
-        <PiGlobe title="Fhenix Website" size={iconSize} />
+      <a href="https://luxfhe.io" target="_blank" rel="noopener noreferrer" className="dark:text-white">
+        <PiGlobe title="LuxFHE Website" size={iconSize} />
       </a>
       <a href="https://docs.redact.money" target="_blank" rel="noopener noreferrer" className="dark:text-white">
         <TbLibrary title="Documents" size={iconSize} />
       </a>
-      <span className="ml-2">Powered by Fhenix</span>
+      <span className="ml-2">Powered by LuxFHE</span>
     </footer>
   );
 };

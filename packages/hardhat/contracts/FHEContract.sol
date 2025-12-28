@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 // Import FHE.sol library
-import "@fhenixprotocol/cofhe-contracts/FHE.sol";
+import "@luxfhe/cofhe-contracts/FHE.sol";
 
 // Useful for debugging. Remove when deploying to a live network.
 import "hardhat/console.sol";

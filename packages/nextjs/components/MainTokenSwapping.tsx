@@ -154,9 +154,9 @@ const CofhejsInitializedOverlay = () => {
   const { isConnected } = useAccount();
   const isChainSupported = useIsConnectedChainSupported();
   const { isInitialized } = useCofhe({
-    // coFheUrl: "https://testnet-cofhe.fhenix.zone",
-    // verifierUrl: "https://testnet-cofhe-vrf.fhenix.zone",
-    // thresholdNetworkUrl: "https://testnet-cofhe-tn.fhenix.zone",
+    // coFheUrl: "https://testnet-cofhe.LuxFHE.zone",
+    // verifierUrl: "https://testnet-cofhe-vrf.LuxFHE.zone",
+    // thresholdNetworkUrl: "https://testnet-cofhe-tn.LuxFHE.zone",
   });
   if (!isConnected || !isChainSupported) return null;
   if (isInitialized) return null;
