@@ -12,7 +12,7 @@ import { Button } from "~~/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~~/components/ui/FnxCard";
 import { RadioButtonGroup } from "~~/components/ui/FnxRadioGroup";
 import { Slider } from "~~/components/ui/FnxSlider";
-import { targetNetworksNoHardhat, useCofhe, useIsConnectedChainSupported } from "~~/hooks/useCofhe";
+import { targetNetworksNoHardhat, useFHE, useIsConnectedChainSupported } from "~~/hooks/useFHE";
 import { useClaimAllAction, useDecryptFherc20Action } from "~~/hooks/useDecryptActions";
 import { useApproveFherc20Action, useDeployFherc20Action, useEncryptErc20Action } from "~~/hooks/useEncryptActions";
 import { formatTokenAmount } from "~~/lib/common";
@@ -78,7 +78,7 @@ export function MainTokenSwapping() {
         <Card className="rounded-[inherit] w-full max-w-[450px] bg-background/60 border-component-stroke firefox-compatible-backdrop-blur-xs">
           <ConnectOverlay />
           <SupportedChainsOverlay />
-          <CofhejsInitializedOverlay />
+          <FHEInitializedOverlay />
 
           <CardHeader>
             <CardTitle className="flex justify-between text-primary-accent text-xl">
@@ -149,21 +149,21 @@ const SupportedChainsOverlay = () => {
   );
 };
 
-const CofhejsInitializedOverlay = () => {
+const FHEInitializedOverlay = () => {
   const { theme } = useTheme();
   const { isConnected } = useAccount();
   const isChainSupported = useIsConnectedChainSupported();
-  const { isInitialized } = useCofhe({
-    // coFheUrl: "https://testnet-cofhe.LuxFHE.zone",
-    // verifierUrl: "https://testnet-cofhe-vrf.LuxFHE.zone",
-    // thresholdNetworkUrl: "https://testnet-cofhe-tn.LuxFHE.zone",
+  const { isInitialized } = useFHE({
+    // coFheUrl: "https://testnet-fhe.LuxFHE.zone",
+    // verifierUrl: "https://testnet-fhe-vrf.LuxFHE.zone",
+    // thresholdNetworkUrl: "https://testnet-fhe-tn.LuxFHE.zone",
   });
   if (!isConnected || !isChainSupported) return null;
   if (isInitialized) return null;
 
   return (
     <div className="absolute flex-col gap-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background/80 firefox-compatible-backdrop-blur-sm w-[99%] h-[99%] z-200 rounded-[inherit] flex items-center justify-center [background-image:repeating-linear-gradient(45deg,#FFFFFF15,#FFFFFF15_10px,transparent_10px,transparent_25px)]">
-      <div className="text-lg font-semibold text-theme-black">Waiting for Cofhe to initialize...</div>
+      <div className="text-lg font-semibold text-theme-black">Waiting for FHE to initialize...</div>
       <div>
         <DotLottieReact
           src={`/lottie/CoFHE-${theme === "dark" ? "White" : "Black"}.lottie`}

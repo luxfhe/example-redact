@@ -7,7 +7,7 @@
 
 ### Running locally
 
-Start the hardhat node with cofhe-mock-contracts deployed:
+Start the hardhat node with fhe-mock-contracts deployed:
 
 ```
 yarn chain

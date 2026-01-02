@@ -29,7 +29,7 @@ describe("ConfidentialERC20", function () {
     const [owner, bob, alice, eve] = await ethers.getSigners();
     const { wBTC, eBTC } = await deployContracts();
 
-    await hre.cofhe.initializeWithHardhatSigner(owner);
+    await hre.fhe.initializeWithHardhatSigner(owner);
 
     return { owner, bob, alice, eve, wBTC, eBTC };
   }
@@ -102,7 +102,7 @@ describe("ConfidentialERC20", function () {
         await ticksToIndicated(eBTC, 5001n),
         "Total indicated supply increases",
       );
-      await hre.cofhe.mocks.expectPlaintext(await eBTC.encTotalSupply(), transferValue);
+      await hre.fhe.mocks.expectPlaintext(await eBTC.encTotalSupply(), transferValue);
 
       // 2nd TX, indicated + 1, true + 1e8
 
@@ -155,7 +155,7 @@ describe("ConfidentialERC20", function () {
       const claimableCtHash = claims[0].ctHash;
       let claim = await eBTC.getClaim(claimableCtHash);
       expect(claim.claimed).to.equal(false, "Claimable amount not claimed");
-      await hre.cofhe.mocks.expectPlaintext(claimableCtHash, transferValue);
+      await hre.fhe.mocks.expectPlaintext(claimableCtHash, transferValue);
 
       // Hardhat time travel 11 seconds
       await hre.network.provider.send("evm_increaseTime", [11]);
@@ -185,7 +185,7 @@ describe("ConfidentialERC20", function () {
         await ticksToIndicated(eBTC, 5000n),
         "Total indicated supply decreases",
       );
-      await hre.cofhe.mocks.expectPlaintext(await eBTC.encTotalSupply(), mintValue - transferValue);
+      await hre.fhe.mocks.expectPlaintext(await eBTC.encTotalSupply(), mintValue - transferValue);
     });
     it("Should claim all decrypted amounts", async function () {
       const { eBTC, bob, wBTC } = await setupFixture();

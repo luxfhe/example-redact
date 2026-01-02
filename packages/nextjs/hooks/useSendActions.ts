@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useTransactor } from "./scaffold-eth";
-import { CoFheInUint128, Encryptable } from "cofhejs/web";
-import { cofhejs } from "cofhejs/web";
+import { FHEInUint128, Encryptable } from "@luxfhe/sdk/web";
+import { fhe } from "@luxfhe/sdk/web";
 import toast from "react-hot-toast";
 import { Abi, Address, erc20Abi } from "viem";
 import { Config, useAccount, useWriteContract } from "wagmi";
@@ -155,10 +155,10 @@ export const useSendConfidentialTokenAction = () => {
 
       setIsPending(true);
 
-      let encryptedAmount: CoFheInUint128;
+      let encryptedAmount: FHEInUint128;
       try {
         setIsEncrypting(true);
-        const encryptedAmountResult = await cofhejs.encrypt([Encryptable.uint128(amount)]);
+        const encryptedAmountResult = await fhe.encrypt([Encryptable.uint128(amount)]);
         if (encryptedAmountResult.error) {
           setIsEncrypting(false);
           throw encryptedAmountResult.error;

@@ -1,21 +1,21 @@
 import React from "react";
 import { Button } from "../ui/Button";
-import { Permit, cofhejs, permitStore } from "cofhejs/web";
+import { Permit, fhe, permitStore } from "@luxfhe/sdk/web";
 import { zeroAddress } from "viem";
 import {
-  useCofhejsAccount,
-  useCofhejsActivePermit,
-  useCofhejsAllPermits,
-  useCofhejsInitialized,
-} from "~~/hooks/useCofhe";
+  useFHEjsAccount,
+  useFHEjsActivePermit,
+  useFHEjsAllPermits,
+  useFHEjsInitialized,
+} from "~~/hooks/useFHE";
 import { truncateAddress } from "~~/lib/common";
 
 export function PermitsPage() {
-  const account = useCofhejsAccount();
-  const initialized = useCofhejsInitialized();
+  const account = useFHEjsAccount();
+  const initialized = useFHEjsInitialized();
 
-  const activePermit = useCofhejsActivePermit();
-  const allPermits = useCofhejsAllPermits();
+  const activePermit = useFHEjsActivePermit();
+  const allPermits = useFHEjsAllPermits();
 
   return (
     <div className="p-4 pt-0 pb-0 flex flex-col gap-4 h-full items-start">
@@ -24,12 +24,12 @@ export function PermitsPage() {
       </div>
 
       <div className="flex flex-row items-center justify-between w-full">
-        <span>Cofhejs Initialized:</span>
+        <span>FHE Initialized:</span>
         <span>{initialized ? "Yes" : "No"}</span>
       </div>
 
       <div className="flex flex-row items-center justify-between w-full">
-        <span>Cofhejs Account:</span>
+        <span>FHE Account:</span>
         <span>{account != null ? truncateAddress(account) : "None"}</span>
       </div>
 
@@ -47,7 +47,7 @@ export function PermitsPage() {
               permit={permit}
               isActive={permit.getHash() === activePermit?.getHash()}
               onSelect={() => {
-                cofhejs.selectActivePermit(permit.getHash());
+                fhe.selectActivePermit(permit.getHash());
               }}
               onDelete={() => {
                 if (!account || !permit._signedDomain?.chainId) return;
@@ -64,7 +64,7 @@ export function PermitsPage() {
         size="sm"
         onClick={() => {
           if (!account) return;
-          cofhejs.createPermit({
+          fhe.createPermit({
             type: "self",
             name: "Test Permit",
             issuer: account,

@@ -8,7 +8,7 @@ import { MoveDownLeft, MoveUpRight, PlusIcon } from "lucide-react";
 import { useAccount } from "wagmi";
 import { useBalance } from "wagmi";
 import { Button } from "~~/components/ui/Button";
-import { FheTypes } from "~~/hooks/useCofhe";
+import { FheTypes } from "~~/hooks/useFHE";
 import { formatTokenAmount } from "~~/lib/common";
 import { cn } from "~~/lib/utils";
 import { usePairClaims } from "~~/services/store/claim";

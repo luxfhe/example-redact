@@ -13,7 +13,7 @@ import { Nonces } from "@openzeppelin/contracts/utils/Nonces.sol";
 import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import { IFHERC20 } from "./interfaces/IFHERC20.sol";
 import { IFHERC20Errors } from "./interfaces/IFHERC20Errors.sol";
-import { FHE, euint128, InEuint128, Utils } from "@luxfhe/cofhe-contracts/FHE.sol";
+import { FHE, euint128, Euint128, Utils } from "@luxfi/contracts/fhe/FHE.sol";
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -201,15 +201,15 @@ abstract contract FHERC20 is IFHERC20, IFHERC20Errors, Context, EIP712, Nonces {
     /**
      * @dev See {IERC20-transfer}.
      *
-     * Intended to be used as a EOA call with an encrypted input `InEuint128 inValue`.
+     * Intended to be used as a EOA call with an encrypted input `Euint128 inValue`.
      *
      * Requirements:
      *
      * - `to` cannot be the zero address.
      * - the caller must have a balance of at least `value`.
-     * - `inValue` must be a `InEuint128` to preserve confidentiality.
+     * - `inValue` must be a `Euint128` to preserve confidentiality.
      */
-    function encTransfer(address to, InEuint128 memory inValue) public virtual returns (euint128 transferred) {
+    function encTransfer(address to, Euint128 memory inValue) public virtual returns (euint128 transferred) {
         return encTransfer(to, FHE.asEuint128(inValue));
     }
 
@@ -271,7 +271,7 @@ abstract contract FHERC20 is IFHERC20, IFHERC20Errors, Context, EIP712, Nonces {
     function encTransferFrom(
         address from,
         address to,
-        InEuint128 memory inValue,
+        Euint128 memory inValue,
         FHERC20_EIP712_Permit calldata permit
     ) public virtual returns (euint128 transferred) {
         if (block.timestamp > permit.deadline) revert ERC2612ExpiredSignature(permit.deadline);

@@ -31,7 +31,7 @@ const encBalances = new Map<string, bigint>();
 export const prepExpectFHERC20BalancesChange = async (token: FHERC20, account: string) => {
   indicatedBalances.set(account, await token.balanceOf(account));
   const encBalanceHash = await token.encBalanceOf(account);
-  const encBalance = await hre.cofhe.mocks.getPlaintext(encBalanceHash);
+  const encBalance = await hre.fhe.mocks.getPlaintext(encBalanceHash);
   encBalances.set(account, encBalance);
 };
 
@@ -52,7 +52,7 @@ export const expectFHERC20BalancesChange = async (
   );
 
   const currEncBalanceHash = await token.encBalanceOf(account);
-  const currEncBalance = await hre.cofhe.mocks.getPlaintext(currEncBalanceHash);
+  const currEncBalance = await hre.fhe.mocks.getPlaintext(currEncBalanceHash);
   const prevEncBalance = encBalances.get(account)!;
   const encChange = currEncBalance - prevEncBalance;
   expect(encChange).to.equal(

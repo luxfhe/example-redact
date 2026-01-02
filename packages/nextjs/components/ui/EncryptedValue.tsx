@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { DisplayValue } from "./DisplayValue";
-import { FheTypes, UnsealedItem } from "cofhejs/web";
+import { FheTypes, UnsealedItem } from "@luxfhe/sdk/web";
 import { EyeOff, LoaderCircle } from "lucide-react";
 import { formatTokenAmount } from "~~/lib/common";
 import { cn } from "~~/lib/utils";

@@ -29,7 +29,7 @@ describe("ConfidentialETH", function () {
     const [owner, bob, alice, eve] = await ethers.getSigners();
     const { wETH, eETH } = await deployContracts();
 
-    await hre.cofhe.initializeWithHardhatSigner(owner);
+    await hre.fhe.initializeWithHardhatSigner(owner);
 
     return { owner, bob, alice, eve, wETH, eETH };
   }
@@ -77,7 +77,7 @@ describe("ConfidentialETH", function () {
         await ticksToIndicated(eETH, 5001n),
         "Total indicated supply increases",
       );
-      await hre.cofhe.mocks.expectPlaintext(await eETH.encTotalSupply(), transferValue);
+      await hre.fhe.mocks.expectPlaintext(await eETH.encTotalSupply(), transferValue);
     });
     it("Should succeed with ETH", async function () {
       const { eETH, bob, wETH } = await setupFixture();
@@ -113,7 +113,7 @@ describe("ConfidentialETH", function () {
         await ticksToIndicated(eETH, 5001n),
         "Total indicated supply increases",
       );
-      await hre.cofhe.mocks.expectPlaintext(await eETH.encTotalSupply(), transferValue);
+      await hre.fhe.mocks.expectPlaintext(await eETH.encTotalSupply(), transferValue);
     });
   });
 
@@ -156,7 +156,7 @@ describe("ConfidentialETH", function () {
       const claimableCtHash = claims[0].ctHash;
       let claim = await eETH.getClaim(claimableCtHash);
       expect(claim.claimed).to.equal(false, "Claimable amount not claimed");
-      await hre.cofhe.mocks.expectPlaintext(claimableCtHash, transferValue);
+      await hre.fhe.mocks.expectPlaintext(claimableCtHash, transferValue);
 
       // Hardhat time travel 11 seconds
       await hre.network.provider.send("evm_increaseTime", [11]);
@@ -189,7 +189,7 @@ describe("ConfidentialETH", function () {
         await ticksToIndicated(eETH, 5000n),
         "Total indicated supply decreases",
       );
-      await hre.cofhe.mocks.expectPlaintext(await eETH.encTotalSupply(), mintValue - transferValue);
+      await hre.fhe.mocks.expectPlaintext(await eETH.encTotalSupply(), mintValue - transferValue);
     });
     it("Should claim all decrypted amounts", async function () {
       const { eETH, bob, wETH } = await setupFixture();

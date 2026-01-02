@@ -19,7 +19,7 @@ import { useAccount, useChainId, useDisconnect, useSwitchChain } from "wagmi";
 import { SettingsPage } from "~~/components/menu-pages/SettingsPage";
 import { IconButton } from "~~/components/ui/IconButton";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
-import { targetNetworksNoHardhat } from "~~/hooks/useCofhe";
+import { targetNetworksNoHardhat } from "~~/hooks/useFHE";
 import { truncateAddress } from "~~/lib/common";
 import { cn } from "~~/lib/utils";
 import {

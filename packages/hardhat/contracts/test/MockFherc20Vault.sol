@@ -6,7 +6,7 @@ pragma solidity ^0.8.25;
 import { ConfidentialERC20 } from "../ConfidentialERC20.sol";
 import { ConfidentialETH } from "../ConfidentialETH.sol";
 import { IWETH } from "../interfaces/IWETH.sol";
-import { InEuint128 } from "@luxfhe/cofhe-contracts/FHE.sol";
+import { Euint128 } from "@luxfi/contracts/fhe/FHE.sol";
 import { IFHERC20 } from "../interfaces/IFHERC20.sol";
 
 contract MockFherc20Vault {
@@ -16,7 +16,7 @@ contract MockFherc20Vault {
         fherc20 = IFHERC20(fherc20_);
     }
 
-    function deposit(InEuint128 memory inValue, IFHERC20.FHERC20_EIP712_Permit calldata permit) public {
+    function deposit(Euint128 memory inValue, IFHERC20.FHERC20_EIP712_Permit calldata permit) public {
         fherc20.encTransferFrom(msg.sender, address(this), inValue, permit);
     }
 }

@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 // Import FHE.sol library
-import "@luxfhe/cofhe-contracts/FHE.sol";
+import "@luxfi/contracts/fhe/FHE.sol";
 
 // Useful for debugging. Remove when deploying to a live network.
 import "hardhat/console.sol";
@@ -14,13 +14,13 @@ contract FHEContract {
         val = FHE.asEuint32(0);
     }
 
-    function setVal(InEuint32 memory _inVal) public {
+    function setVal(Euint32 memory _inVal) public {
         val = FHE.asEuint32(_inVal);
         FHE.allowSender(val);
         FHE.allowThis(val);
     }
 
-    function valOp(uint8 op, InEuint32 memory _operand) public {
+    function valOp(uint8 op, Euint32 memory _operand) public {
         euint32 operand = FHE.asEuint32(_operand);
         if (op == 0) {
             val = FHE.add(val, operand);

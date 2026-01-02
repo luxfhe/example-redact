@@ -6,7 +6,7 @@ import { IERC20, IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/ERC2
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { FHERC20 } from "./FHERC20.sol";
 import { IWETH } from "./interfaces/IWETH.sol";
-import { euint128, FHE } from "@luxfhe/cofhe-contracts/FHE.sol";
+import { euint128, FHE } from "@luxfi/contracts/fhe/FHE.sol";
 import { EnumerableSet } from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import { ConfidentialClaim } from "./ConfidentialClaim.sol";
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";

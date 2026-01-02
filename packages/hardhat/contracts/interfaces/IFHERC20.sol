@@ -5,7 +5,7 @@ pragma solidity ^0.8.25;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import { euint128, InEuint128 } from "@luxfhe/cofhe-contracts/FHE.sol";
+import { euint128, Euint128 } from "@luxfi/contracts/fhe/FHE.sol";
 
 /**
  * @dev Implementation of the {IERC20} interface.
@@ -130,15 +130,15 @@ interface IFHERC20 is IERC20, IERC20Metadata {
     /**
      * @dev See {IERC20-transfer}.
      *
-     * Intended to be used as a EOA call with an encrypted input `InEuint128 inValue`.
+     * Intended to be used as a EOA call with an encrypted input `Euint128 inValue`.
      *
      * Requirements:
      *
      * - `to` cannot be the zero address.
      * - the caller must have a balance of at least `value`.
-     * - `inValue` must be a `InEuint128` to preserve confidentiality.
+     * - `inValue` must be a `Euint128` to preserve confidentiality.
      */
-    function encTransfer(address to, InEuint128 memory inValue) external returns (euint128 transferred);
+    function encTransfer(address to, Euint128 memory inValue) external returns (euint128 transferred);
 
     /**
      * @dev See {IERC20-transfer}.
@@ -189,7 +189,7 @@ interface IFHERC20 is IERC20, IERC20Metadata {
     function encTransferFrom(
         address from,
         address to,
-        InEuint128 memory inValue,
+        Euint128 memory inValue,
         FHERC20_EIP712_Permit calldata permit
     ) external returns (euint128 transferred);
 
